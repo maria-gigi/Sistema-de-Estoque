@@ -28,51 +28,20 @@ CREATE TABLE users (
     estado VARCHAR(50),
     complemento VARCHAR(150),
     
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE Livros(
+CREATE TABLE produtos(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    codigoBarras VARCHAR(100) NOT NULL UNIQUE ,
+    codigo_barras VARCHAR(100) NOT NULL,
     titulo VARCHAR(255) NOT NULL,
     editora VARCHAR(255) NOT NULL,
     genero VARCHAR(100) NOT NULL,
-    localArmazenamento VARCHAR(255),
-    dataPublicacao DATE,
+    selo VARCHAR(255),
+    data_publicacao DATE,
     quantidade BIGINT,
-    quantidadeMin BIGINT,
-    valor DECIMAL (10,2)
+    valor DECIMAL (10,2),
+    total DECIMAL (10,2),
+    status VARCHAR(255)
 );
-
-
-CREATE TABLE Venda{
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	CodBarProduto VARCHAR(100),
-	CONSTRAINT itensVenda_CodBarProduto FOREIGN KEY (CodBarProduto) 
-	REFERENCES produtos(codigoBarras) ON UPDATE CASCADE,
-	valorTotal DECIMAL(10,2);
-	quantidade INT,
-	desconto DECIMAL(10,2)
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

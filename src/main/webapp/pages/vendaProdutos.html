@@ -20,7 +20,7 @@
         </header>
         <main>
             <section id="form-container">
-                <form action="../cadastro/produto" autocomplete="off" method="POST" id="formCadastro">
+                <form action="../venda/produto" autocomplete="off" method="POST" id="formCadastro">
                     <div class="linha-form">
                         <label>Código de Barras</label>
                         <input type="text" name="codigoBarras" required />
@@ -47,12 +47,12 @@
                             <input type="number" name="quantidade" id="calcular" required />
                          </div>
                          <div class="grupo-form">
-                            <label>Quantidade Mínima</label>
-                            <input type="number" name="quantidadeMin" id="calcular" required />
+                            <label>Desconto</label>
+                            <input type="number" name="desconto" id="calcular" />
                          </div>
                          <div class="grupo-form">
-                            <label>Valor</label>
-                            <input type="number" name="valor" id="calcular" required />
+                            <label>Valor Total</label>
+                            <input type="number" name="total" required />
                          </div>
                     </div>
                     <div class="acoes-form">

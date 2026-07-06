@@ -12,7 +12,7 @@ import model.UserModel;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet{
-    
+    @Override
     protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
@@ -34,10 +34,9 @@ public class LoginServlet extends HttpServlet{
                     request.getSession();
             
             session.setAttribute("usuario", user.getUsername());
-            session.setAttribute("perfil", user.getFuncao());
-            
+            session.setAttribute("perfil", user.getFuncao()); 
             response.sendRedirect(request.getContextPath() + "/pages/dashboard.html");
-        }else{
+        }else{ 
             response.sendRedirect(request.getContextPath() + "/index.html");
         }
     }

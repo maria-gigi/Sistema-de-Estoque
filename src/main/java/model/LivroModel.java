@@ -1,6 +1,6 @@
 package model;
 
-public class ProdutoModel {
+public class LivroModel {
     
     private int id;
     private String codigoBarras;
@@ -92,5 +92,13 @@ public class ProdutoModel {
 
     public void setStatus(String status) {
         this.status = status;
-    }    
+    }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}    
 }

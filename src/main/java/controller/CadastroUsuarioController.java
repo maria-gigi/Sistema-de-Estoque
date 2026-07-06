@@ -9,9 +9,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import model.CadastroUsuarioModel;
 
-@WebServlet("/cadastro")
-public class CadastroController extends HttpServlet {
-    
+@WebServlet("/cadastro/usuario")
+public class CadastroUsuarioController extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -33,7 +33,7 @@ public class CadastroController extends HttpServlet {
         user.setBairro(request.getParameter("bairro"));
         user.setCidade(request.getParameter("cidade"));
         user.setEstado(request.getParameter("estado"));
-        user.setNumero(Long.parseLong(request.getParameter("numero")));
+        user.setNumero(request.getParameter("numero"));
         user.setComplemento(request.getParameter("complemento"));
         
         CadastroUsersDAO dao = new CadastroUsersDAO();
