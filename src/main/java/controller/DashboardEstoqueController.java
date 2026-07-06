@@ -1,38 +1,31 @@
 package controller;
 
-import com.google.gson.Gson;
-import dao.CadastroLivroDAO;
+import dao.DashboardEstoqueDAO;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
-import javax.imageio.IIOException;
-import model.CadastroLivroModel;
 
-/**
- *
- * @author 015.509576
- */
+import java.io.IOException;
+
+
 @WebServlet("/dashboard/estoque")
 public class DashboardEstoqueController extends HttpServlet{
     
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
-         throws IIOException, IOException{
+         throws IOException{
          
-         String nome = request.getParameter("nome");
-         String tipo = request.getParameter("tipo");
-         String data = request.getParameter("data");
+         String nome = request.getParameter("filtroNome");
+         String tipo = request.getParameter("filtroGenero");
+         String editora = request.getParameter("filtroEditora");
+         String data = request.getParameter("filtroData");
          
-         CadastroLivroDAO dao = new CadastroLivroDAO();
-         List <CadastroLivroModel> lista = dao.listarComFiltro(nome,tipo, data);
-         
-         String json = new Gson().toJson(lista);
+         DashboardEstoqueDAO dao = new DashboardEstoqueDAO();
+         String resultado = dao.listarComFiltro(nome,tipo, editora ,data);
          
          response.setContentType("application/json");
          response.setCharacterEncoding("UTF-8");
-         response.getWriter().write(json);
+         response.getWriter().write(resultado);
      }
      
     

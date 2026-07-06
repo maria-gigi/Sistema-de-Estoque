@@ -38,8 +38,8 @@ CREATE TABLE Livros(
     genero VARCHAR(100) NOT NULL,
     localArmazenamento VARCHAR(255),
     dataPublicacao DATE,
-    quantidade BIGINT,
-    quantidadeMin BIGINT,
+    quantidade INT,
+    quantidadeMin INT,
     valor DECIMAL (10,2)
 );
 

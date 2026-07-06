@@ -43,22 +43,4 @@ public class CadastroLivroDAO {
                 
     }
     
-    public boolean exibirEstoque(CadastroLivroModel model){
-    	String sql = "SELECT * FROM Livros";
-               
-        try(Connection con = ConnectionFactory.getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql);
-        		ResultSet rs = stmt.executeQuery()){
-            
-            
-            
-            return true;
-          
-        }catch(SQLException e){
-            e.printStackTrace();
-            return false;
-        }
-                
-    }
-    
 }
