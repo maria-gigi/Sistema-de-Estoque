@@ -15,7 +15,7 @@ public class DashboardEstoqueDAO {
 	public String listarComFiltro(String nome,String tipo,String editora ,String data) {
 		List<String> listFiltro = new ArrayList<>();
 		String sqlFiltro = "SELECT codigoBarras, titulo, editora, genero, "
-				+ "localArmazenamento, dataPublicacao, quantidade,valor "
+				+ "localArmazenamento, dataPublicacao, quantidade, valor, quantidadeMin "
 				+ "FROM Livros WHERE 1=1";
 		
 		if(nome != null && !nome.trim().isEmpty()) {
@@ -63,6 +63,14 @@ public class DashboardEstoqueDAO {
 				livro.put("dataPublicacao", rsFiltro.getString(6));
 				livro.put("quantidade", rsFiltro.getString(7));
 				livro.put("valor", rsFiltro.getString(8));
+				
+				if(0 == rsFiltro.getInt(7)){
+					livro.put("status", "ACABOU");
+				}else if(rsFiltro.getInt(9) > rsFiltro.getInt(7)) {
+					livro.put("status", "ACABANDO");
+				}else {
+					livro.put("status", "COM ESTOQUE");
+				}
 				
 				resultado.add(livro);
 			}

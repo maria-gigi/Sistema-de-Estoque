@@ -54,6 +54,14 @@ CREATE TABLE Venda{
 	desconto DECIMAL(10,2)
 }
 
+CREATE TABLE Estoque{
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	CodBarProduto VARCHAR(100),
+	CONSTRAINT itensVenda_CodBarProduto FOREIGN KEY (CodBarProduto) 
+	REFERENCES produtos(codigoBarras) ON UPDATE CASCADE,
+	quantidade INT
+}
+
 
 
 

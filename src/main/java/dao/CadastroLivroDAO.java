@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,11 @@ public class CadastroLivroDAO {
                 "(codigoBarras, titulo, editora, genero, localArmazenamento, "
                 + "dataPublicacao, quantidade, quantidadeMin, valor) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?)";
-               
+       String queryEstoque = "INSERT INTO Estoque (CodBarProduto, quantidade) "
+       		+ "VALUES (?,?)";
         try(Connection con = ConnectionFactory.getConnection();
-            PreparedStatement stmt = con.prepareStatement(sql)){
+            PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmtqueryEstoque = con.prepareStatement(queryEstoque)){
             
             stmt.setString(1, model.getCodigoBarras());
             stmt.setString(2, model.getTitulo());
@@ -34,6 +37,8 @@ public class CadastroLivroDAO {
             
             stmt.executeUpdate();
             
+            stmtqueryEstoque.setString(1, model.getCodigoBarras());
+            stmtqueryEstoque.setInt(2, );
             return true;
           
         }catch(SQLException e){
