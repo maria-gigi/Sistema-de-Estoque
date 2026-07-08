@@ -8,7 +8,7 @@ async function carregarEstoque(){
         
         dados.forEach(item =>{
             const linha = document.createElement("tr")
-            linha.innerHTML += `
+            linha.innerHTML = `
                        <td>${item.codigoBarras}</td>
                        <td>${item.titulo}</td>
                        <td>${item.genero}</td>
@@ -19,8 +19,12 @@ async function carregarEstoque(){
                        <td>${item.quantidadeMin}</td>
                        <td>${item.valor}</td>
                          `
-            if(parseFloat(item.quantidade) < parseFloat(item.quantidadeMin)){
-                linha.classList.add('reporEstoque')
+            if(item.status == "ACABOU"){
+                linha.classList.add('ACABOU')
+            }
+
+            if(item.status == "ACABANDO"){
+                linha.classList.add('ACABANDO')
             }
  
             tabela.appendChild(linha);

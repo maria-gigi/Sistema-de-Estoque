@@ -19,10 +19,9 @@ public class LivroAttributeController extends HttpServlet{
 			response.getWriter().write(livroAttributeDAO.exibir());
 			response.setStatus(HttpServletResponse.SC_OK);
 
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-
 		}catch(Exception e) {
 			e.printStackTrace();
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 		}
 	}
 }

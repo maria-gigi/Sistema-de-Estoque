@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import dao.VendaLivroDAO;
 
-@WebServlet("/venda/produto")
+@WebServlet("/venda/livro")
 public class VendaLivroController extends HttpServlet{
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -22,14 +22,14 @@ public class VendaLivroController extends HttpServlet{
 		model.setCodigoBarras(request.getParameter("codigoBarras"));
 		model.setQuantidade(request.getParameter("quantidade"));
 		model.setDesconto(request.getParameter("desconto"));
-		model.setDesconto(request.getParameter("valorTotal"));
+		model.setValorTotal(request.getParameter("total"));
         
         VendaLivroDAO dao = new VendaLivroDAO();
         
         if(dao.salvar(model)){
-            response.sendRedirect("pages/dashboard.html");
+            response.sendRedirect(request.getContextPath() + "/pages/dashboard.html");
         }else{
-            response.sendRedirect("pages/vendaLivros.html");
+            response.sendRedirect(request.getContextPath() + "/pages/vendaLivros.html");
         }
     }
 }

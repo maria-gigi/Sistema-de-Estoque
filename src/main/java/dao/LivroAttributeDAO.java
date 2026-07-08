@@ -15,7 +15,7 @@ import connection.ConnectionFactory;
 public class LivroAttributeDAO {
 	public String exibir(){
 		String sql = "SELECT codigoBarras, titulo, editora, genero,"
-				+ "localArmazenamento, dataPublicacao, quantidade"
+				+ "localArmazenamento, dataPublicacao, quantidade,"
 				+ "quantidadeMin, valor FROM Livros";
 
 		

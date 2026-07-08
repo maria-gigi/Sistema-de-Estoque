@@ -263,6 +263,10 @@ body {
     background-color: var(--primary-dark);
 }
 
-.reporEstoque{
+.ACABOU{
     color: red;
+}
+
+.ACABANDO{
+    color: rgba(255, 174, 0, 0.849);
 }

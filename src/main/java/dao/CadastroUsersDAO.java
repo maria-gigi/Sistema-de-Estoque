@@ -2,6 +2,8 @@ package dao;
 
 import connection.ConnectionFactory;
 import java.sql.PreparedStatement;
+import java.time.LocalDate;
+
 import model.CadastroUsuarioModel;
 import util.SenhaUtil;
 
@@ -27,7 +29,7 @@ try (var con = ConnectionFactory.getConnection()) {
     stmt.setString(5, user.getMatricula());
     stmt.setString(6, user.getCpf());
     stmt.setString(7, user.getSexo());
-    stmt.setString(8, user.getDtaNascimento());
+    stmt.setDate(8, java.sql.Date.valueOf(LocalDate.parse(user.getDtaNascimento())));
     stmt.setString(9, user.getEmail());
     stmt.setString(10, user.getTelefone());
     stmt.setString(11, user.getFuncao());
@@ -40,7 +42,7 @@ try (var con = ConnectionFactory.getConnection()) {
     stmt.setString(18, user.getComplemento());
 
     stmt.executeUpdate();
-
+    stmt.close();
     return true;
 
 } catch (Exception e) {

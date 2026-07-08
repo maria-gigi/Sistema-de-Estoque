@@ -29,9 +29,9 @@ public class CadastroLivroController extends HttpServlet{
             CadastroLivroDAO dao = new CadastroLivroDAO();
             
             if(dao.salvar(produto)){
-                response.sendRedirect("pages/dashboard.html");
+                response.sendRedirect(request.getContextPath() + "/pages/dashboard.html");
             }else{
-                response.sendRedirect("pages/cadastroProdutos.html");
+                response.sendRedirect(request.getContextPath() + "/pages/cadastroLivros.html");
             }
         }
     }

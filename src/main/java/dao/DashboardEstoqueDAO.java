@@ -3,6 +3,8 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +22,7 @@ public class DashboardEstoqueDAO {
 		
 		if(titulo != null && !titulo.trim().isEmpty()) {
 			sqlFiltro += " AND titulo = ?";
+			System.out.println("Entrou no TITULO");
 			listFiltro.add(titulo);
 		}
 		
@@ -29,7 +32,7 @@ public class DashboardEstoqueDAO {
 		}
 		
 		if(data != null && !data.trim().isEmpty()) {
-			sqlFiltro += " AND data = ?";	
+			sqlFiltro += " AND dataPublicacao >= ?";	
 		}
 		
 		var con = ConnectionFactory.getConnection();
@@ -41,7 +44,7 @@ public class DashboardEstoqueDAO {
 			}
 			
 			if(data != null && !data.trim().isEmpty()) {
-				stmtFiltro.setString( i , data);	
+				stmtFiltro.setDate(i, java.sql.Date.valueOf(LocalDate.parse(data)));	
 			}
 			
 			
@@ -56,16 +59,15 @@ public class DashboardEstoqueDAO {
 				livro.put("editora", rsFiltro.getString(3));
 				livro.put("genero", rsFiltro.getString(4));
 				livro.put("localArmazenamento", rsFiltro.getString(5));
-				livro.put("dataPublicacao", rsFiltro.getString(6));
+				livro.put("dataPublicacao", LocalDate.parse(rsFiltro.getString(6)).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 				livro.put("quantidade", rsFiltro.getString(7));
 				livro.put("valor", rsFiltro.getString(8));
+				livro.put("quantidadeMin", rsFiltro.getString(9));
 				
 				if(0 == rsFiltro.getInt(7)){
 					livro.put("status", "ACABOU");
 				}else if(rsFiltro.getInt(9) > rsFiltro.getInt(7)) {
 					livro.put("status", "ACABANDO");
-				}else {
-					livro.put("status", "COM ESTOQUE");
 				}
 				
 				resultado.add(livro);

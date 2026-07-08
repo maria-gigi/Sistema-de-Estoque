@@ -25,39 +25,39 @@
         </header>
         <main>
             <section id="form-container">
-                <form action="../venda/produto" autocomplete="off" method="POST" id="formCadastro">
+                <form action="../venda/livro" autocomplete="off" method="POST" id="formCadastro">
                     <div class="linha-form">
                         <label>Código de Barras</label>
-                        <input type="text" name="codigoBarras" readonly />
+                        <input type="text" name="codigoBarras" id="codigoBarras" readonly />
                     </div>
                     <div class="grupo-form">
                         <label>Titulo</label>
                         <div class="autocomplete-container"> 
                             <input type="text" id="tituloSugestao" disabled autocomplete="off" />
                         
-                            <input type="text" id="titulo" name="titulo" placeholder="Digite o título do livro..." autocomplete="off">
+                            <input type="text" id="titulo"  placeholder="Digite o título do livro..." autocomplete="off">
                         </div>
                     </div>
                     <div class="linha-form">
                         <label>Editora</label>
-                        <input type="text" name="editora" readonly />
+                        <input type="text" id="editora" readonly />
                     </div>
                     <div class="linha-form">
                         <label>Data de Publicação</label>
-                        <input type="date" name="dataPublicacao" readonly />
+                        <input type="date" id="dataPublicacao" readonly />
                     </div>
                     <div class="linha-form">
                          <div class="grupo-form">
                             <label>Quantidade</label>
-                            <input type="number" name="quantidade" id="calcular" required />
+                            <input type="number" name="quantidade" id="quantidade" required />
                          </div>
                          <div class="grupo-form">
                             <label>Desconto</label>
-                            <input type="number" name="desconto" id="calcular" />
+                            <input type="number" name="desconto" id="desconto" />
                          </div>
                          <div class="grupo-form">
                             <label>Valor Total</label>
-                            <input type="number" name="total" readonly />
+                            <input type="number" name="total" id="total" readonly />
                          </div>
                     </div>
                     <div class="acoes-form">
@@ -69,5 +69,6 @@
         </main>
         <script src ="../js/validarLogin.js"></script>
         <script src ="../js/logout.js"></script>
+        <script src ="../js/vendaProdutos.js"></script>
     </body>
 </html>
