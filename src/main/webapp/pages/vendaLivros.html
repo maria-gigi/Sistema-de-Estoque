@@ -2,44 +2,49 @@
     <head>
         <link rel="stylesheet" href="../css/reset.css"/>
         <link rel="stylesheet" href="../css/color.css"/>
-        <link rel="stylesheet" href="../css/cadastroProdutos.css"/>
-        <title>Cadastrando Produto</title>
+        <link rel="stylesheet" href="../css/vendaLivro.css"/>
+        <title>Venda de Produto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <header id="header">
-            <h1 id="tituloDashboard">Sistema de estoque</h1>
-            <nav>
-                <ul>
-                    <li><a href="dashboard.html" >Inicio</a></li>
-                    <li><a href="#" >Gerenciamento</a></li>
-                    <li><a href="cadastro.html">Cadastro</a></li>
-                </ul>
-            </nav>
+        <header id="header" class="main-header">
+            <div class="header-container">
+                <h1 id="tituloDashboard" class="logo">
+                    Sistema<span>Estoque</span>
+                </h1>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="dashboard.html" class="nav-link active">Início</a></li>
+                        <li><a href="cadastroLivros.html" class="nav-link btn-cadastro">Cadastro de Livros</a></li>
+                        <li><a href="cadastroUsuario.html" class="nav-link btn-cadastro">Cadastro de Usuario</a></li>
+                        <li><a href="#" id="btnLogout" class="btn-logout">Sair</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <main>
             <section id="form-container">
                 <form action="../venda/produto" autocomplete="off" method="POST" id="formCadastro">
                     <div class="linha-form">
                         <label>Código de Barras</label>
-                        <input type="text" name="codigoBarras" required />
+                        <input type="text" name="codigoBarras" readonly />
                     </div>
                     <div class="grupo-form">
                         <label>Titulo</label>
-                        <input type="text" name="titulo" required />
+                        <div class="autocomplete-container"> 
+                            <input type="text" id="tituloSugestao" disabled autocomplete="off" />
+                        
+                            <input type="text" id="titulo" name="titulo" placeholder="Digite o título do livro..." autocomplete="off">
+                        </div>
                     </div>
                     <div class="linha-form">
                         <label>Editora</label>
-                        <input type="text" name="editora" required />
-                    </div>
-                    <div class="grupo-form">
-                        <label>Local de Armazenamento</label>
-                        <input type="text" name="localArmazenamento" required />
+                        <input type="text" name="editora" readonly />
                     </div>
                     <div class="linha-form">
                         <label>Data de Publicação</label>
-                        <input type="date" name="dataPublicacao" required />
+                        <input type="date" name="dataPublicacao" readonly />
                     </div>
                     <div class="linha-form">
                          <div class="grupo-form">
@@ -52,7 +57,7 @@
                          </div>
                          <div class="grupo-form">
                             <label>Valor Total</label>
-                            <input type="number" name="total" required />
+                            <input type="number" name="total" readonly />
                          </div>
                     </div>
                     <div class="acoes-form">
@@ -62,6 +67,7 @@
                 </form>
             </section>
         </main>
-        <script scr="../js/cadastroProdutos.js"></script>
+        <script src ="../js/validarLogin.js"></script>
+        <script src ="../js/logout.js"></script>
     </body>
 </html>

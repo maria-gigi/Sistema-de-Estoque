@@ -13,36 +13,32 @@ import java.io.IOException;
 
 @WebFilter("/*")
 public class AuthFilter implements Filter{
-    
-    @Override
+	@Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException{
-    
+            throws IOException, ServletException {
+
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        
+
         HttpSession session = req.getSession(false);
-        
         String uri = req.getRequestURI();
-        
-        if(uri.contains("index.html") || uri.contains("login") || uri.contains("css") || uri.contains("js")){
+
+        if(uri.endsWith("index.html") || uri.endsWith("login") || uri.contains(".css") || uri.contains(".js")){
             chain.doFilter(request, response);
-            
+
             return;
         }
-        
-        if(session == null || session.getAttribute("usuario") == null){
-            res.sendRedirect(req.getContextPath() + "/index.html");
+        if(session == null || session.getAttribute("usuario") == null) {
+            res.sendRedirect(req.getContextPath()+"index.html");
             return;
         }
-        
-        String perfil = (String) session.getAttribute("perfil");
-        
-        if(uri.contains("cadastro") && !"admin".equals(perfil)){
+
+        String permissao = (String) session.getAttribute("perfil");
+        if(uri.contains("cadastro") && !"admin".equals(permissao)){
             res.sendError(HttpServletResponse.SC_FORBIDDEN);
             return;
         }
-        
+
         chain.doFilter(request, response);
-    } 
+    }
 }

@@ -20,16 +20,16 @@ public class VendaLivroController extends HttpServlet{
 		VendaLivroModel model = new VendaLivroModel();
 		
 		model.setCodigoBarras(request.getParameter("codigoBarras"));
-		model.setTitulo(request.getParameter("titulo"));
 		model.setQuantidade(request.getParameter("quantidade"));
 		model.setDesconto(request.getParameter("desconto"));
+		model.setDesconto(request.getParameter("valorTotal"));
         
         VendaLivroDAO dao = new VendaLivroDAO();
         
         if(dao.salvar(model)){
             response.sendRedirect("pages/dashboard.html");
         }else{
-            response.sendRedirect("pages/cadastroProdutos.html");
+            response.sendRedirect("pages/vendaLivros.html");
         }
     }
 }

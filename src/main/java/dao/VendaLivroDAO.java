@@ -1,8 +1,8 @@
 package dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import connection.ConnectionFactory;
@@ -25,9 +25,9 @@ public class VendaLivroDAO{
 
 
         	stmtVenda.setString(1,model.getCodigoBarras());
-        	stmtVenda.setString(2, model.getValorTotal());
-        	stmtVenda.setString(3, model.getQuantidade());
-        	stmtVenda.setString(3, model.getDesconto());
+        	stmtVenda.setBigDecimal(2, BigDecimal.valueOf(Double.parseDouble(model.getValorTotal())));
+        	stmtVenda.setInt(3, Integer.parseInt(model.getQuantidade()));
+        	stmtVenda.setBigDecimal(4, BigDecimal.valueOf(Double.parseDouble(model.getDesconto())));
             
         	stmtVenda.executeUpdate();
         	

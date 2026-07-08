@@ -9,30 +9,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <header id="header">
-            <h1 id="tituloDashboard">Sistema de estoque</h1>
-            <nav>
-                <ul>
-                    <li><a href="dashboard.html" >Inicio</a></li>
-                    <li><a href="#" >Gerenciamento</a></li>
-                    <li><a href="cadastro.html" class="btn-menu">Cadastro</a></li>
-                    <li><a href="#" id="btnLogout">Sair</a></li>
-                </ul>
-            </nav>
+        <header id="header" class="main-header">
+            <div class="header-container">
+                <h1 id="tituloDashboard" class="logo">
+                    Sistema<span>Estoque</span>
+                </h1>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="cadastroLivros.html" class="nav-link btn-cadastro">Cadastro de Livros</a></li>
+                        <li><a href="cadastroUsuario.html" class="nav-link btn-cadastro">Cadastro de Usuario</a></li>
+                        <li><a href="vendaLivros.html" class="nav-link btn-cadastro">Venda</a></li>
+                        <li><a href="#" id="btnLogout" class="btn-logout">Sair</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <main>
             <section id="resumoEstoque">
                 <div class="card-resumo">
                     <h2 class="titulo-card">Entrada</h2>
-                    <p class="valor-card" id="cardEntrada" >100</p>
+                    <p class="valor-card" id="cardEntrada" ></p>
                 </div>
                 <div class="card-resumo">
                     <h2 class="titulo-card">Saída</h2>
-                    <p class="valor-card" id="cardSaida">80</p>
+                    <p class="valor-card" id="cardSaida"></p>
                 </div>
                 <div class="card-resumo">
                     <h2 class="titulo-card">Total</h2>
-                    <p class="valor-card" id="cardTotal">20</p>
+                    <p class="valor-card" id="cardTotal"></p>
                 </div>
             </section>
             <section id="filtro">
@@ -41,12 +45,8 @@
                     <input type="date" id="filtroData" class="input-filtro">
                 </div>
                 <div class="grupo-filtro">
-                    <label for="tipoMovimentacao">Tipo</label>
-                    <select id="tipoMovimentacao" class="select-filtro">
-                        <option value="">Selecione uma opção</option>
-                        <option value="entrada">Entrada</option>
-                        <option value="saida">Saída</option>
-                    </select>
+                    <label for="genero">Gênero</label>
+                    <input type="text" id="filtroGenero" class="input-filtro" placeholder="Gênero do livro">
                 </div>
                 <div class="grupo-filtro pesquisa-nome">
                     <label for="pesquisarNome">Pesquisar item</label>
@@ -54,9 +54,6 @@
                 </div>
                 <div class="grupo-filtro botao-pesquisa">
                     <button id="btnPesquisar" class="btn-pesquisa">Pesquisar</button>
-                </div>
-                <div class="topo-tabela">
-                    <a href="../pages/cadastroProdutos.html" class="btn-add">+</a>
                 </div>
             </section>
             <section id="tabelaEstoqueContainer">
@@ -70,8 +67,9 @@
                                 <th>Editora</th>
                                 <th>Data de Publi.</th>
                                 <th>Local Armazenamento </th>
-                                <th>Valor</th>
-                                <th>Status</th>
+                                <th>quantidade</th>
+                                <th>quantidade Min.</th>
+                                <th>valor</th>
                             </tr>
                         </thead>
                         <tbody id="corpoTabela">
@@ -97,7 +95,7 @@
             </section>
         </main>
         <script src ="../js/dashboard.js"></script>
-        <script src ="../js/filto.js"></script>
+        <script src ="../js/filtro.js"></script>
         <script src ="../js/validarLogin.js"></script>
         <script src ="../js/logout.js"></script>
     </body>

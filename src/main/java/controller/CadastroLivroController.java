@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import model.CadastroLivroModel;
 
-@WebServlet("/cadastro/produto")
+@WebServlet("/cadastro/livro")
 public class CadastroLivroController extends HttpServlet{
     
     public void doPost(HttpServletRequest request, HttpServletResponse response)

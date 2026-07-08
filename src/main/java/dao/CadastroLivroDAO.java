@@ -1,6 +1,8 @@
 package dao;
 
 import connection.ConnectionFactory;
+
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,16 +31,19 @@ public class CadastroLivroDAO {
             stmt.setString(2, model.getTitulo());
             stmt.setString(3, model.getEditora());
             stmt.setString(4, model.getGenero());
-            stmt.setDate(5, java.sql.Date.valueOf(LocalDate.parse(model.getDataPublicacao())));
-            stmt.setString(6, model.getQuantidade());
-            stmt.setString(7, model.getQuantidadeMin());
-            stmt.setString(8, model.getValor());
+            stmt.setString(5, model.getLocalArmazenamento());
+            stmt.setDate(6, java.sql.Date.valueOf(LocalDate.parse(model.getDataPublicacao())));
+            stmt.setInt(7, Integer.parseInt(model.getQuantidade()));
+            stmt.setInt(8, Integer.parseInt(model.getQuantidadeMin()));
+            stmt.setBigDecimal(9,  BigDecimal.valueOf(Double.parseDouble(model.getValor())) );
 
             
             stmt.executeUpdate();
             
             stmtqueryEstoque.setString(1, model.getCodigoBarras());
-            stmtqueryEstoque.setInt(2, );
+            stmtqueryEstoque.setInt(2, Integer.parseInt(model.getQuantidade()) );
+            
+            stmtqueryEstoque.executeUpdate();
             return true;
           
         }catch(SQLException e){

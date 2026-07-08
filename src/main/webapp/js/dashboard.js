@@ -1,27 +1,29 @@
 async function carregarEstoque(){
     try{
-        const response = await fetch("http://localhost:8080/api/estoque");
+        const response = await fetch("http://localhost:8080/dashboard/estoque");
         const dados = await response.json();
         
         const tabela = document.getElementById("corpoTabela");
         tabela.innerHTML = "";
         
         dados.forEach(item =>{
-            const linha = `
-                   <tr>
+            const linha = document.createElement("tr")
+            linha.innerHTML += `
                        <td>${item.codigoBarras}</td>
-                       <td>${item.nomeProduto}</td>
-                       <td>${item.fabricante}</td>
-                       <td>${item.dataFabricacao}</td>
-                       <td>${item.dataVencimento}</td>
-                       <td>${item.marca}</td>
+                       <td>${item.titulo}</td>
+                       <td>${item.genero}</td>
+                       <td>${item.editora}</td>
+                       <td>${item.dataPublicacao}</td>
+                       <td>${item.localArmazenamento}</td>
                        <td>${item.quantidade}</td>
+                       <td>${item.quantidadeMin}</td>
                        <td>${item.valor}</td>
-                       <td>${item.total}</td>
-                       <td>${item.status}</td>
-                   </tr>
-                   `;
-            tabela.innerHTML += linha;
+                         `
+            if(parseFloat(item.quantidade) < parseFloat(item.quantidadeMin)){
+                linha.classList.add('reporEstoque')
+            }
+ 
+            tabela.appendChild(linha);
         });
     }catch(erro){
         console.log("Erro ao carregar os produtos", erro);
@@ -30,11 +32,11 @@ async function carregarEstoque(){
 
 async function carregarResumo(){
     try{
-        const response = await fetch("http://localhost:8080/api/resumo");
+        const response = await fetch("http://localhost:8080/dashboard/resumo");
         const dados = await response.json();
-        document.getElementById("cardEntrada").innerHTML = dados.entradaVal;
-        document.getElementById("cardSaida").innerHTML = dados.saidaVal;
-        document.getElementById("cardTotal").innerHTML = dados.totalVal;
+        document.getElementById("cardEntrada").innerHTML = dados.estoque;
+        document.getElementById("cardSaida").innerHTML = dados.saida;
+        document.getElementById("cardTotal").innerHTML = dados.total;
         
     }catch(erro){
         console.log("Erro na consulta dos dados", erro);
@@ -43,8 +45,7 @@ async function carregarResumo(){
 
 
 //manter sempre carregado
-window.onload = () => {
-        carregarEstoque();
-        carregarResumo();
-        
-};
+document.addEventListener('DOMContentLoaded', () => {
+    carregarEstoque();
+    carregarResumo();
+});

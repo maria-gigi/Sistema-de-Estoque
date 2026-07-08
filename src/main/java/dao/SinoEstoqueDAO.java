@@ -3,8 +3,6 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 import connection.ConnectionFactory;
 
@@ -17,7 +15,6 @@ public class SinoEstoqueDAO {
 			ResultSet rs = stmt.executeQuery();){
 			String status = null;
 			
-			Map<String, String> resultado = new HashMap<>();
 			while(rs.next()) {
 				
 				status ="COM ESTOQUE";

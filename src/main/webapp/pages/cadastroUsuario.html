@@ -4,19 +4,25 @@
         <link rel="stylesheet" href="../css/reset.css"/>
         <link rel="stylesheet" href="../css/color.css"/>
         <link rel="stylesheet" href="../css/cadastro.css"/>
-        <title>Cadastro</title>
+        <title>Cadastro de Usuario</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <header id="header">
-            <h1 id="tituloCadastro">Sistema de estoque</h1>
-            <nav>
-                <ul>
-                    <li><a href="#" >Inicio</a></li>
-                    <li><a href="#" >Gerenciamento</a></li>
-                </ul>
-            </nav>
+        <header id="header" class="main-header">
+            <div class="header-container">
+                <h1 id="tituloDashboard" class="logo">
+                    Sistema<span>Estoque</span>
+                </h1>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="dashboard.html" class="nav-link">inicio</a></li>
+                        <li><a href="cadastroLivros.html" class="nav-link btn-cadastro">Cadastro de Livros</a></li>
+                        <li><a href="vendaLivros.html" class="nav-link btn-cadastro">Venda</a></li>
+                        <li><a href="#" id="btnLogout" class="btn-logout">Sair</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <main id="main">
             <form action="../cadastro/usuario" method="POST">

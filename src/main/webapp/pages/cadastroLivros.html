@@ -2,21 +2,26 @@
     <head>
         <link rel="stylesheet" href="../css/reset.css"/>
         <link rel="stylesheet" href="../css/color.css"/>
-        <link rel="stylesheet" href="../css/cadastroProdutos.css"/>
-        <title>Cadastrando Produto</title>
+        <link rel="stylesheet" href="../css/cadastroLivros.css"/>
+        <title>Cadastrando Livro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <header id="header">
-            <h1 id="tituloDashboard">Sistema de estoque</h1>
-            <nav>
-                <ul>
-                    <li><a href="dashboard.html" >Inicio</a></li>
-                    <li><a href="#" >Gerenciamento</a></li>
-                    <li><a href="cadastro.html">Cadastro</a></li>
-                </ul>
-            </nav>
+        <header id="header" class="main-header">
+            <div class="header-container">
+                <h1 id="tituloDashboard" class="logo">
+                    Sistema<span>Estoque</span>
+                </h1>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="dashboard.html" class="nav-link active">Início</a></li>
+                        <li><a href="cadastroUsuario.html" class="nav-link btn-cadastro">Cadastro Usuario</a></li>
+                        <li><a href="vendaProdutos.html" class="nav-link btn-cadastro">Venda</a></li>
+                        <li><a href="#" id="btnLogout" class="btn-logout">Sair</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <main>
             <section id="form-container">
@@ -62,6 +67,5 @@
                 </form>
             </section>
         </main>
-        <script scr="../js/cadastroProdutos.js"></script>
     </body>
 </html>

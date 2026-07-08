@@ -12,24 +12,20 @@ import com.google.gson.Gson;
 
 import connection.ConnectionFactory;
 public class DashboardEstoqueDAO {
-	public String listarComFiltro(String nome,String tipo,String editora ,String data) {
+	public String listarComFiltro(String titulo,String genero ,String data) {
 		List<String> listFiltro = new ArrayList<>();
 		String sqlFiltro = "SELECT codigoBarras, titulo, editora, genero, "
 				+ "localArmazenamento, dataPublicacao, quantidade, valor, quantidadeMin "
 				+ "FROM Livros WHERE 1=1";
 		
-		if(nome != null && !nome.trim().isEmpty()) {
-			sqlFiltro += " AND nome = ?";
-			listFiltro.add(nome);
+		if(titulo != null && !titulo.trim().isEmpty()) {
+			sqlFiltro += " AND titulo = ?";
+			listFiltro.add(titulo);
 		}
 		
-		if(tipo != null && !tipo.trim().isEmpty()) {
-			sqlFiltro += " AND tipo = ?";
-			listFiltro.add(tipo);
-		}
-		if(editora != null && !editora.trim().isEmpty()) {
-			sqlFiltro += " AND editora = ?";	
-			listFiltro.add(editora);
+		if(genero != null && !genero.trim().isEmpty()) {
+			sqlFiltro += " AND genero = ?";
+			listFiltro.add(genero);
 		}
 		
 		if(data != null && !data.trim().isEmpty()) {

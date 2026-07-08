@@ -1,26 +1,28 @@
 package controller;
 
-import dao.AdicionarEstoqueDAO;
+import dao.LivroAttributeDAO;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/adicionar/estoque")
-public class AdicionarEstoqueController extends HttpServlet{
+@WebServlet("/livro")
+public class LivroAttributeController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
 		
-		int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-		String CodBarProduto = request.getParameter("CodBarProduto");
-		
-		AdicionarEstoqueDAO dao = new AdicionarEstoqueDAO();
-		
-		if(dao.adicionar(quantidade, CodBarProduto)) {
+		try {
+			LivroAttributeDAO livroAttributeDAO = new LivroAttributeDAO();
+
+			response.getWriter().write(livroAttributeDAO.exibir());
 			response.setStatus(HttpServletResponse.SC_OK);
-			
-		}else {
+
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -2,16 +2,16 @@ async function filtroEstoque() {
 
     try {
         
-        const url = `http://localhost:8080/api/estoque?nome=
-        ${encodeURIComponent(nome)}
-        &tipo=${encodeURIComponent(tipo)}&
+        const url = `http://localhost:8080/dashboard/estoque?nome=
+        ${encodeURIComponent(titulo)}
+        &tipo=${encodeURIComponent(genero)}&
             &data=${encodeURIComponent(data)}`;
 
         const response = await fetch(url);
         const dados = await response.json();
 
-        const nome = document.getElementById("pesquisarNome").value;
-        const tipo = document.getElementById("tipoMovimentacao").value;
+        const titulo = document.getElementById("pesquisarNome").value;
+        const genero = document.getElementById("filtroGenero").value;
         const data = document.getElementById("filtroData").value;
         
         const tabela = document.getElementById("corpoTabela");
@@ -19,11 +19,11 @@ async function filtroEstoque() {
 
         const filtrados = dados.filter(item => {
 
-            const matchNome = nome === "" || item.nomeProduto.toLowerCase().includes(nome);
-            const matchTipo = tipo === "" || item.status === tipo;
-            const matchData = data === "" || item.dataFabricacao === data;
+            const matchTitulo = titulo === "" || item.titulo.toLowerCase().includes(titulo);
+            const matchGenero = genero === "" || item.genero === genero;
+            const matchData = data === "" || item.dataPublicacao === data;
 
-            return matchNome && matchTipo && matchData;
+            return matchTitulo && matchGenero && matchData;
         });
 
         filtrados.forEach(item => {

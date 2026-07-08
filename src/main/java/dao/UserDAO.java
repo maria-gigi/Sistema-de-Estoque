@@ -9,34 +9,36 @@ import util.SenhaUtil;
 public class UserDAO {
     
     public UserModel validarLogin(UserModel userModel) {
-        String sql = 
-                "SELECT * FROM users WHERE username= ?";
+        String sql =  "SELECT username, psw, funcao FROM users WHERE username= ?";
         
         try (var con = ConnectionFactory.getConnection()){
                         
-            PreparedStatement stmt =
-                    con.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, userModel.getUsername());
             
             ResultSet rs = stmt.executeQuery();
             
+
+   
+            boolean senhaValida = false; 
             if(rs.next()){
                 String hashBanco = rs.getString("psw");
-                boolean senhaValida = false; 
-                if(userModel.getPassword().equals(System.getenv("dbpassword"))){
+
+                if(userModel.getPassword().trim().equals(System.getenv("dbpassword")) || SenhaUtil.verificarSenha(userModel.getPassword(),hashBanco)){
                 	senhaValida = true;	
                 }
+            }
+
+            
+            if(senhaValida){
+            	
+                UserModel user = new UserModel();
+                user.setUsername(rs.getString("username"));
+                user.setPassword(userModel.getPassword());
+                user.setFuncao(rs.getString("funcao"));
                 
-                System.out.println(senhaValida + " O valor da senha");
-                 
-                if(senhaValida){
-                    UserModel user = new UserModel();
-                    user.setUsername(rs.getString("username"));
-                    user.setPassword(hashBanco);
-                    user.setFuncao(rs.getString("funcao"));
-                    
-                    return user;
-                }
+                
+                return user;
             }
             
             return null;

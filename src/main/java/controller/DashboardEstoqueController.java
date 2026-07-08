@@ -15,13 +15,12 @@ public class DashboardEstoqueController extends HttpServlet{
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
          throws IOException{
          
-         String nome = request.getParameter("filtroNome");
-         String tipo = request.getParameter("filtroGenero");
-         String editora = request.getParameter("filtroEditora");
-         String data = request.getParameter("filtroData");
+         String titulo = request.getParameter("titulo");
+         String genero = request.getParameter("genero");
+         String data = request.getParameter("data");
          
          DashboardEstoqueDAO dao = new DashboardEstoqueDAO();
-         String resultado = dao.listarComFiltro(nome,tipo, editora ,data);
+         String resultado = dao.listarComFiltro(titulo, genero ,data);
          
          response.setContentType("application/json");
          response.setCharacterEncoding("UTF-8");

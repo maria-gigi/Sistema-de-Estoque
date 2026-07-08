@@ -1,104 +1,89 @@
 package model;
 
 public class LivroModel {
-    
-    private int id;
-    private String codigoBarras;
-    private String nomeProduto;
-    private String fabricante;
-    private String marca;
-    private String dataFabricacao;
-    private String dataVencimento;
-    private long quantidade;
+	private String codigoBarras;
+    private String titulo;
+    private String editora;
+    private String genero;
+    private String localArmazenamento;
+    private String dataPublicacao;
+    private String quantidade;
+    private String quantidadeMin;
     private String valor;
-    private String total;
-    private String status;
-
-    public String getCodigoBarras() {
-        return codigoBarras;
-    }
-
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
-    }
-
-    public String getNomeProduto() {
-        return nomeProduto;
-    }
-
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
-    }
-
-    public String getFabricante() {
-        return fabricante;
-    }
-
-    public void setFabricante(String fabricante) {
-        this.fabricante = fabricante;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getDataFabricacao() {
-        return dataFabricacao;
-    }
-
-    public void setDataFabricacao(String dataFabricacao) {
-        this.dataFabricacao = dataFabricacao;
-    }
-
-    public String getDataVencimento() {
-        return dataVencimento;
-    }
-
-    public void setDataVencimento(String dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
-
-    public long getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(long quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public String getValor() {
-        return valor;
-    }
-
-    public void setValor(String valor) {
-        this.valor = valor;
-    }
-
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
-        this.total = total;
-    }
     
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-	public int getId() {
-		return id;
+    public LivroModel(String codigoBarras, String titulo, String editora, String genero, String localArmazenamento,
+			String dataPublicacao, String quantidade, String quantidadeMin, String valor) {
+		super();
+		this.codigoBarras = codigoBarras;
+		this.titulo = titulo;
+		this.editora = editora;
+		this.genero = genero;
+		this.localArmazenamento = localArmazenamento;
+		this.dataPublicacao = dataPublicacao;
+		this.quantidade = quantidade;
+		this.quantidadeMin = quantidadeMin;
+		this.valor = valor;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}    
+    
+    
+    
+	public String getCodigoBarras() {
+		return codigoBarras;
+	}
+	public void setCodigoBarras(String codigoBarras) {
+		this.codigoBarras = codigoBarras;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public String getEditora() {
+		return editora;
+	}
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	public String getLocalArmazenamento() {
+		return localArmazenamento;
+	}
+	public void setLocalArmazenamento(String localArmazenamento) {
+		this.localArmazenamento = localArmazenamento;
+	}
+	public String getDataPublicacao() {
+		return dataPublicacao;
+	}
+	public void setDataPublicacao(String dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+	public String getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(String quantidade) {
+		this.quantidade = quantidade;
+	}
+	public String getQuantidadeMin() {
+		return quantidadeMin;
+	}
+	public void setQuantidadeMin(String quantidadeMin) {
+		this.quantidadeMin = quantidadeMin;
+	}
+	public String getValor() {
+		return valor;
+	}
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+
+   
+
+ 
 }

@@ -12,23 +12,26 @@ public class DashboardResumoDAO {
 	private String result;
 	public boolean gerarResumo(){
 	         
-		String sqlEstoque = "SELECT SUM(quantidade) FROM Livros" ;
+		String sqlEstoque = "SELECT SUM(quantidade) FROM Estoque" ;
 		
 		String sqlVenda = "SELECT SUM(quantidade) FROM Venda" ;
 		
 		try (Connection  conn = ConnectionFactory.getConnection();
 	         PreparedStatement stmtEstoque = conn.prepareStatement(sqlEstoque);
-			PreparedStatement stmtVenda = conn.prepareStatement(sqlVenda);
+			PreparedStatement stmtVenda = conn.prepareStatement(sqlVenda);){
+
 	         ResultSet rsEstoque = stmtEstoque.executeQuery();
-			ResultSet rsVenda = stmtEstoque.executeQuery()){
+			ResultSet rsVenda = stmtVenda.executeQuery();
 	            int estoque = 0;
 	            int saida = 0;
 	            
 	            rsEstoque.next();
 	            estoque = rsEstoque.getInt(1);
-
+	            rsEstoque.close();
+	            
 	            rsVenda.next();
 	            saida = rsVenda.getInt(1);
+	            rsVenda.close();
         
 	            int total = estoque - saida;
 	            
