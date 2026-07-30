@@ -79,49 +79,6 @@ O Docker irá iniciar:
 
 ---
 
-## 🛢️ Banco de Dados
-
-O sistema utiliza o **MySQL** para armazenamento dos dados.
-
-Exemplo de configuração:
-
-| Configuração | Valor |
-|--------------|-------|
-| Banco | estoque |
-| Porta | 3306 |
-| Usuário | root |
-| Senha | root |
-
-> Esses valores podem ser alterados no arquivo `docker-compose.yml`.
-
----
-
-## ▶️ Executando sem Docker
-
-1. Instale o Java (JDK 17 ou superior).
-2. Instale o MySQL.
-3. Crie o banco de dados.
-4. Configure as credenciais da conexão.
-5. Execute:
-
-```bash
-mvn clean install
-mvn exec:java
-```
-
----
-
-## 📌 Exemplo de Produto
-
-| Campo | Exemplo |
-|--------|----------|
-| Nome | Livro Java |
-| Categoria | Programação |
-| Quantidade | 25 |
-| Preço | R$ 89,90 |
-
----
-
 ## 📈 Possíveis Melhorias
 
 - Controle de permissões
